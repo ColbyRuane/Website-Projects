@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors? on MY website???</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Rock - Paper - Scissors</h1>
+
+    <div id="choices">
+        <button onclick="playGame('Rock!')">💎</button>
+        <button onclick="playGame('Paper!')">📃</button>
+        <button onclick="playGame('Scissors!')">✌</button>    
+    </div>
+
+    <div id="player-display">PLAYER:</div>
+    <div id="computer-display">COMPUTER:</div>
+    <div id="result">RESULT:</div>
+
+    <div class="score">Player Score:
+        <span id="p-score"></span>
+    </div>
+    <div class="score">Computer Score:
+        <span id="c-score"></span>
+    </div>
+
+    <script>
+        const choices = ['Rock!', 'Paper!', 'Scissors!'];
+        const pdisplay = document.getElementById('player-display');
+        const cdisplay = document.getElementById('computer-display');
+        const rdisplay = document.getElementById('result');
+        const pscore = document.getElementById('p-score');
+        const cscore = document.getElementById('c-score');
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function playGame(choice){
+
+            const against = choices[Math.floor(Math.random() * 3)];
+            console.log(against);
+            let result = '';
+            let winText = 'YOU WIN!';
+            let lossText = 'You Lost! ⚔'
+
+            if(choice === against) {
+                result = "It's a TIE!";
+            }
+            else {
+                switch(choice){
+                    case 'Rock!':
+                        result = (against === 'Scissors!') ? winText : lossText
+                        break;
+                    case 'Paper!':
+                        result = (against === 'Rock!') ? winText : lossText
+                        break;
+                    case 'Scissors!':
+                        result = (against === 'Paper!') ? winText : lossText
+                        break;
+                    }
+            }
+
+            pdisplay.textContent = `PLAYER: ${choice} 😲`;
+            cdisplay.textContent = `COMPUTER: ${against} 🙄`;
+            rdisplay.textContent = `RESULT: ${result}`;
+
+            rdisplay.classList.remove('to-green', 'to-red');
+            switch(result) {
+                case lossText:
+                    rdisplay.classList.add('to-red');
+                    computerScore++;
+                    cscore.textContent = computerScore;
+                    break;
+                case winText:
+                    rdisplay.classList.add('to-green');
+                    playerScore++;
+                    pscore.textContent = playerScore;
+                    break;
+            }
+            console.log(rdisplay.classList);
+        }
+    </script>
+</body>
+</html>

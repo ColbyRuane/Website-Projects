@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    color: rgb(177, 36, 83);
+}
+
+#choices {
+    margin-bottom: 20px; 
+}
+
+#choices button {
+    font-size: 3rem;
+    margin: 0px 15px;
+    padding: 10px 20px;
+    min-width: 150px;
+    border-radius: 10px;
+    border: none;
+    background-color: palevioletred;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+#choices button:hover {
+    background-color: hsl(340, 31%, 50%);
+}
+#player-display, #computer-display, #result {
+    font-size: 2rem;
+    margin: 0px 0px;
+}
+.to-green, #p-score {
+    color:rgb(49, 119, 84);
+}
+.to-red, #c-score {
+    color:rgb(192, 28, 28);
+}
+.score {
+    margin-top: 10px;
+    font-size: 1.25rem;
+}

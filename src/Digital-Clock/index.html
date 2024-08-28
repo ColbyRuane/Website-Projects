@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock? on MY Website???</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clock-container">
+        <div id="clock"></div>
+    </div>
+
+    <script>
+
+        function update(){
+            const now = new Date();
+
+            let hours1 = now.getHours();
+            const meridiem = hours1 >= 12 ? 'PM' : 'AM';
+            let hours2 = hours1 >= 12 ? hours1 - 12 : hours1;
+            hours2 = hours2.toString().padStart(2, 0);
+
+            const minutes = now.getMinutes().toString().padStart(2, 0);
+            const seconds = now.getSeconds().toString().padStart(2, 0);
+
+            const timeStr = `${hours2}:${minutes}:${seconds} ${meridiem}`;
+            document.getElementById("clock").textContent = timeStr;
+        }
+
+        update();
+        setInterval(update, 1000);
+
+    </script>
+</body>
+</html>

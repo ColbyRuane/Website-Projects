@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwords? on MY Website???</title>
+</head>
+<body>
+    <script>
+        function passwordGen(length, lower, upper, num, symbol) {
+            const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+            const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numChars = '0123456789';
+            const symbolChars = '!@#$%^&*()_+-=';
+
+            let allowedChars = '';
+            let password = '';
+
+            allowedChars += lower ? lowerChars : '';
+            allowedChars += upper ? upperChars : "";
+            allowedChars += num ? numChars : '';
+            allowedChars += symbol ? symbolChars : '';
+
+            if(length <= 0) {
+                return 'Invalid password length!';
+            }
+            if(allowedChars.length === 0) {
+                return 'No valid characters are selected!';
+            }
+
+            for (let index = 0; index < length; index++) {
+                const randomIndex = Math.floor(Math.random() * allowedChars.length);
+                password += allowedChars[randomIndex];
+            }
+
+            return password;
+        }
+
+        const passwordLength = '12';
+        const includeLower = true;
+        const includeUpper = true;
+        const includeNum = true;
+        const includeSymbols = true;
+
+        const password = passwordGen(
+            passwordLength, 
+            includeLower, 
+            includeUpper, 
+            includeNum, 
+            includeSymbols);
+
+        console.log(`Generated Password: ${password}`);
+    </script>
+</body>
+</html>
